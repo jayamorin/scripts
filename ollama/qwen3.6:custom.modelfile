@@ -1,0 +1,8 @@
+FROM qwen3.6:35b-a3b-q4_K_M
+
+# Set the context length requested
+PARAMETER num_ctx 262144
+
+# Explicitly maintain steady inference stability for large contexts
+PARAMETER temperature 0.6
+PARAMETER top_p 0.95
