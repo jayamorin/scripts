@@ -15,12 +15,13 @@
 6. 2026-11-03: **A repo that fails to read is reported and the scan goes on**, exit code 1. Failing to list a namespace's repos stops the run. Dropped connections, timeouts and HTTP 5xx are retried up to 3 times.
 7. 2026-11-03: **`--url` only for GitLab (default gitlab.com) and Gitea (required).** GitHub Enterprise and Bitbucket Data Center are out of scope.
 8. 2026-11-03: **Layout:** one folder per topic (`git/`, `ollama/`, `vm/`, `misc/`). Rejected: keeping scripts in the root.
+9. 2026-11-04: **Remote: private `jayamorin/scripts` on the personal account**, since these are personal scripts. Rejected: the SpaghettiCodeChefs org, which holds the team's projects; a public repo.
 
 ## Known Issues
 
 1. [minor] On GitHub, the last-commit date and author come from the compare API's commit list. For a branch more than 250 commits ahead, that's the 250th commit, not the tip. `git/list_unmerged_branches.py`, `GitHub.ahead`.
 2. [minor] 26 SpaghettiCodeChefs repos have no `main` branch (empty, or on another default branch) and are skipped. To cover them, pass `--base`, or see Suggestion 1.
-3. [minor] No git remote: the repo is local only. Push it if you want a backup or to share it (Next Step 1).
+3. [minor] No git remote: the repo is local only. 2026-11-04: creating `jayamorin/scripts` (private) and pushing was approved, but Claude Code's permission check blocked `gh repo create`. Needs the maintainer to run Next Step 1.
 
 ## To Verify
 
@@ -34,7 +35,7 @@
 
 ## Next Steps
 
-1. [minor] Decide whether to create a remote (e.g. GitHub) and push.
+1. [minor] Create the remote and push (decided 2026-11-04: private repo `jayamorin/scripts` on the personal account): `gh repo create jayamorin/scripts --private --description "Personal utility scripts" --source . --remote origin --push`
 
 ## Suggestions / Future Suggestions
 
